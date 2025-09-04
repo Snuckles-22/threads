@@ -1,28 +1,29 @@
-# importação de biblioteca
-
+#importação de bibliotecas
 import threading
-import time # biblioteca de tempo
-import math # biblioteca de matemática
+import time
 
-# estrututa da thread
-
-def loop(nome, inicio, fim):
-    for i in range(inicio, fim +1):
+#estrutura de thread
+def estrutura(nome,inicio,fim):
+    for i in range(inicio,fim +1):
         print(f"{nome} -> {i}")
 
-# pausa entre as durações de contagem
-        time.sleep(1)
+#criação das threads
 
-# criar thread
-thread1 = threading.Thread(target=loop, args=("Thread-1", 1, 10))
-thread2 = threading.Thread(target=loop, args=("Thread-2", 11, 20))
+thread1 = threading.Thread(target=estrutura, args=("Thread-1",1,10))
+thread2 = threading.Thread(target=estrutura, args=("Thread-2",50,60))
 
-# rodar
+
+#tempo de espera
+print("Iniciando as threads...")
+time.sleep(2)
+
+#rodar as threads
 thread1.start()
 thread2.start()
 
-# estado de espera
+#estado de espera
 thread1.join()
 thread2.join()
 
+print("Threads finalizadas!")
 
